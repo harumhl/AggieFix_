@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController_Report : UIViewController
+@interface ViewController_Report : UIViewController {
+    IBOutlet UIScrollView *scroller;
+}
 
 @end
