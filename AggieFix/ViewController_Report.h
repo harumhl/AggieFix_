@@ -8,12 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController_Report : UIViewController {
+@interface ViewController_Report : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
+    
     IBOutlet UIScrollView *scroller;
     IBOutlet UITextField *titleText;
     IBOutlet UILabel *loaded;
     
     IBOutlet UILabel *photoOptionSelected;
+    
+    UIImagePickerController* takePhoto;
+    UIImagePickerController* loadPhoto;
+    UIImage *image;
+    IBOutlet UIImageView *imageView;
 }
 
 // https://www.youtube.com/watch?v=NavVADVU6fk
@@ -24,4 +30,7 @@
 // https://www.youtube.com/watch?v=4s-C3f6kQp4
 - (IBAction)photoOption:(id)sender;
 
+// https://www.youtube.com/watch?v=T7COfFjhXo8
+- (IBAction)takePhoto:(id)sender;
+- (IBAction)chooseExisting:(id)sender;
 @end

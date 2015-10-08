@@ -74,4 +74,28 @@
     [self presentViewController:photoOption animated:YES completion:nil];
 }
 
+// https://www.youtube.com/watch?v=T7COfFjhXo8
+- (IBAction)takePhoto:(id)sender {
+    takePhoto = [[UIImagePickerController alloc] init];
+    takePhoto.delegate = self;
+    [takePhoto setSourceType:UIImagePickerControllerSourceTypeCamera];
+    [self presentViewController:takePhoto animated:YES completion:NULL];
+//    [takePhoto release];
+}
+- (IBAction)chooseExisting:(id)sender {
+    takePhoto = [[UIImagePickerController alloc] init];
+    takePhoto.delegate = self;
+    [takePhoto setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    [self presentViewController:takePhoto animated:YES completion:NULL];
+//    [takePhoto release];
+}
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    [imageView setImage:image];
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
 @end
