@@ -1,18 +1,18 @@
 //
-//  ViewController_Email.m
+//  ViewController_Report
 //  AggieFix
 //
 //  Created by Myunghoon Lee (Haru) on 9/15/15.
 //  Copyright (c) 2015 Engineers Serving the Community. All rights reserved.
 //
 
-#import "ViewController_Email.h"
+#import "ViewController_Report.h"
 
-@interface ViewController_Email ()
+@interface ViewController_Report ()
 
 @end
 
-@implementation ViewController_Email
+@implementation ViewController_Report
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,6 +33,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+// Exiting back to the main menu
 - (IBAction)exit:(id)sender {
     
     [self.navigationController popToRootViewControllerAnimated:YES];

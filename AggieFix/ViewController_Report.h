@@ -1,5 +1,5 @@
 //
-//  ViewController_Email.h
+//  ViewController_Report
 //  AggieFix
 //
 //  Created by Myunghoon Lee (Haru) on 9/15/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController_Email : UIViewController
+@interface ViewController_Report : UIViewController
 
 @end
