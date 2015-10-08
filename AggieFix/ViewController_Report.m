@@ -59,4 +59,19 @@
     [sender resignFirstResponder];
 }
 
+- (IBAction)photoOption:(id)sender {
+    UIAlertController *photoOption = [UIAlertController alertControllerWithTitle:@"Photo option" message:@"" preferredStyle:UIAlertViewStyleDefault];
+    
+    // 1st option
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Take a picture" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {photoOptionSelected.text = @"camera";}];
+    [photoOption addAction:defaultAction];
+    
+    // 2nd option
+    UIAlertAction* anotherAction = [UIAlertAction actionWithTitle:@"Get photo from photo app" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {photoOptionSelected.text = @"photo";}];
+    [photoOption addAction:anotherAction];
+
+    // present
+    [self presentViewController:photoOption animated:YES completion:nil];
+}
+
 @end

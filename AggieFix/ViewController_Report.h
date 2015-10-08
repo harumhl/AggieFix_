@@ -12,11 +12,16 @@
     IBOutlet UIScrollView *scroller;
     IBOutlet UITextField *titleText;
     IBOutlet UILabel *loaded;
+    
+    IBOutlet UILabel *photoOptionSelected;
 }
 
 // https://www.youtube.com/watch?v=NavVADVU6fk
 - (IBAction)saveText:(id)sender;
 - (IBAction)loadText:(id)sender;
 - (IBAction)dismissKeyboard:(id)sender;
+
+// https://www.youtube.com/watch?v=4s-C3f6kQp4
+- (IBAction)photoOption:(id)sender;
 
 @end
