@@ -1,0 +1,433 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F0901BBD1BA8B82A0022BDE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F0901BBC1BA8B82A0022BDE0 /* main.m */; };
+		F0901BC01BA8B82B0022BDE0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0901BBF1BA8B82B0022BDE0 /* AppDelegate.m */; };
+		F0901BC31BA8B82B0022BDE0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0901BC21BA8B82B0022BDE0 /* ViewController.m */; };
+		F0901BC61BA8B82B0022BDE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0901BC41BA8B82B0022BDE0 /* Main.storyboard */; };
+		F0901BC81BA8B82C0022BDE0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0901BC71BA8B82C0022BDE0 /* Images.xcassets */; };
+		F0901BCB1BA8B82C0022BDE0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0901BC91BA8B82C0022BDE0 /* LaunchScreen.xib */; };
+		F0901BD71BA8B82C0022BDE0 /* AggieFixTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0901BD61BA8B82C0022BDE0 /* AggieFixTests.m */; };
+		F0901BE21BA8B9680022BDE0 /* ViewController_Email.m in Sources */ = {isa = PBXBuildFile; fileRef = F0901BE11BA8B9680022BDE0 /* ViewController_Email.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F0901BD11BA8B82C0022BDE0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F0901BAF1BA8B8290022BDE0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F0901BB61BA8B8290022BDE0;
+			remoteInfo = AggieFix;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F0901BB71BA8B8290022BDE0 /* AggieFix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AggieFix.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0901BBB1BA8B82A0022BDE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0901BBC1BA8B82A0022BDE0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F0901BBE1BA8B82B0022BDE0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F0901BBF1BA8B82B0022BDE0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F0901BC11BA8B82B0022BDE0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		F0901BC21BA8B82B0022BDE0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F0901BC51BA8B82B0022BDE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F0901BC71BA8B82C0022BDE0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F0901BCA1BA8B82C0022BDE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		F0901BD01BA8B82C0022BDE0 /* AggieFixTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AggieFixTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0901BD51BA8B82C0022BDE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0901BD61BA8B82C0022BDE0 /* AggieFixTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AggieFixTests.m; sourceTree = "<group>"; };
+		F0901BE01BA8B9680022BDE0 /* ViewController_Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController_Email.h; sourceTree = "<group>"; };
+		F0901BE11BA8B9680022BDE0 /* ViewController_Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController_Email.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F0901BB41BA8B8290022BDE0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0901BCD1BA8B82C0022BDE0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F0901BAE1BA8B8290022BDE0 = {
+			isa = PBXGroup;
+			children = (
+				F0901BB91BA8B8290022BDE0 /* AggieFix */,
+				F0901BD31BA8B82C0022BDE0 /* AggieFixTests */,
+				F0901BB81BA8B8290022BDE0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F0901BB81BA8B8290022BDE0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F0901BB71BA8B8290022BDE0 /* AggieFix.app */,
+				F0901BD01BA8B82C0022BDE0 /* AggieFixTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F0901BB91BA8B8290022BDE0 /* AggieFix */ = {
+			isa = PBXGroup;
+			children = (
+				F0901BBE1BA8B82B0022BDE0 /* AppDelegate.h */,
+				F0901BBF1BA8B82B0022BDE0 /* AppDelegate.m */,
+				F0901BC11BA8B82B0022BDE0 /* ViewController.h */,
+				F0901BC21BA8B82B0022BDE0 /* ViewController.m */,
+				F0901BC41BA8B82B0022BDE0 /* Main.storyboard */,
+				F0901BE01BA8B9680022BDE0 /* ViewController_Email.h */,
+				F0901BE11BA8B9680022BDE0 /* ViewController_Email.m */,
+				F0901BC71BA8B82C0022BDE0 /* Images.xcassets */,
+				F0901BC91BA8B82C0022BDE0 /* LaunchScreen.xib */,
+				F0901BBA1BA8B82A0022BDE0 /* Supporting Files */,
+			);
+			path = AggieFix;
+			sourceTree = "<group>";
+		};
+		F0901BBA1BA8B82A0022BDE0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F0901BBB1BA8B82A0022BDE0 /* Info.plist */,
+				F0901BBC1BA8B82A0022BDE0 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F0901BD31BA8B82C0022BDE0 /* AggieFixTests */ = {
+			isa = PBXGroup;
+			children = (
+				F0901BD61BA8B82C0022BDE0 /* AggieFixTests.m */,
+				F0901BD41BA8B82C0022BDE0 /* Supporting Files */,
+			);
+			path = AggieFixTests;
+			sourceTree = "<group>";
+		};
+		F0901BD41BA8B82C0022BDE0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F0901BD51BA8B82C0022BDE0 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F0901BB61BA8B8290022BDE0 /* AggieFix */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0901BDA1BA8B82C0022BDE0 /* Build configuration list for PBXNativeTarget "AggieFix" */;
+			buildPhases = (
+				F0901BB31BA8B8290022BDE0 /* Sources */,
+				F0901BB41BA8B8290022BDE0 /* Frameworks */,
+				F0901BB51BA8B8290022BDE0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AggieFix;
+			productName = AggieFix;
+			productReference = F0901BB71BA8B8290022BDE0 /* AggieFix.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F0901BCF1BA8B82C0022BDE0 /* AggieFixTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0901BDD1BA8B82C0022BDE0 /* Build configuration list for PBXNativeTarget "AggieFixTests" */;
+			buildPhases = (
+				F0901BCC1BA8B82C0022BDE0 /* Sources */,
+				F0901BCD1BA8B82C0022BDE0 /* Frameworks */,
+				F0901BCE1BA8B82C0022BDE0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F0901BD21BA8B82C0022BDE0 /* PBXTargetDependency */,
+			);
+			name = AggieFixTests;
+			productName = AggieFixTests;
+			productReference = F0901BD01BA8B82C0022BDE0 /* AggieFixTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F0901BAF1BA8B8290022BDE0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = "Engineers Serving the Community";
+				TargetAttributes = {
+					F0901BB61BA8B8290022BDE0 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					F0901BCF1BA8B82C0022BDE0 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = F0901BB61BA8B8290022BDE0;
+					};
+				};
+			};
+			buildConfigurationList = F0901BB21BA8B8290022BDE0 /* Build configuration list for PBXProject "AggieFix" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F0901BAE1BA8B8290022BDE0;
+			productRefGroup = F0901BB81BA8B8290022BDE0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F0901BB61BA8B8290022BDE0 /* AggieFix */,
+				F0901BCF1BA8B82C0022BDE0 /* AggieFixTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F0901BB51BA8B8290022BDE0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0901BC61BA8B82B0022BDE0 /* Main.storyboard in Resources */,
+				F0901BCB1BA8B82C0022BDE0 /* LaunchScreen.xib in Resources */,
+				F0901BC81BA8B82C0022BDE0 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0901BCE1BA8B82C0022BDE0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F0901BB31BA8B8290022BDE0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0901BC31BA8B82B0022BDE0 /* ViewController.m in Sources */,
+				F0901BC01BA8B82B0022BDE0 /* AppDelegate.m in Sources */,
+				F0901BBD1BA8B82A0022BDE0 /* main.m in Sources */,
+				F0901BE21BA8B9680022BDE0 /* ViewController_Email.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0901BCC1BA8B82C0022BDE0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0901BD71BA8B82C0022BDE0 /* AggieFixTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F0901BD21BA8B82C0022BDE0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F0901BB61BA8B8290022BDE0 /* AggieFix */;
+			targetProxy = F0901BD11BA8B82C0022BDE0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F0901BC41BA8B82B0022BDE0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F0901BC51BA8B82B0022BDE0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F0901BC91BA8B82C0022BDE0 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F0901BCA1BA8B82C0022BDE0 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F0901BD81BA8B82C0022BDE0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F0901BD91BA8B82C0022BDE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F0901BDB1BA8B82C0022BDE0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = AggieFix/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F0901BDC1BA8B82C0022BDE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = AggieFix/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F0901BDE1BA8B82C0022BDE0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AggieFixTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AggieFix.app/AggieFix";
+			};
+			name = Debug;
+		};
+		F0901BDF1BA8B82C0022BDE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AggieFixTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AggieFix.app/AggieFix";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F0901BB21BA8B8290022BDE0 /* Build configuration list for PBXProject "AggieFix" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0901BD81BA8B82C0022BDE0 /* Debug */,
+				F0901BD91BA8B82C0022BDE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F0901BDA1BA8B82C0022BDE0 /* Build configuration list for PBXNativeTarget "AggieFix" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0901BDB1BA8B82C0022BDE0 /* Debug */,
+				F0901BDC1BA8B82C0022BDE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F0901BDD1BA8B82C0022BDE0 /* Build configuration list for PBXNativeTarget "AggieFixTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0901BDE1BA8B82C0022BDE0 /* Debug */,
+				F0901BDF1BA8B82C0022BDE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F0901BAF1BA8B8290022BDE0 /* Project object */;
+}
