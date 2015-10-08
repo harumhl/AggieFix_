@@ -38,11 +38,6 @@
 }
 */
 
-// Exiting back to the main menu
-- (IBAction)exit:(id)sender {
-    
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
 //==============================================================================
 // TEMPORARY function to show text saving from title field && loading from saved
 - (IBAction)saveText:(id)sender {
@@ -107,11 +102,6 @@
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 //==============================================================================
-
-
-
-
-
 // Send email
 // THIS PORTION IS INCOMPLETE SINCE THE SIMULATOR DOESN'T WORK FOR EMAILS
 // I PURPOSELY DID NOT IMPLEMENT ATTACHING THE IMAGE FROM THE SOURCE, BECAUSE OF IT.

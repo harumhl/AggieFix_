@@ -15,10 +15,10 @@
     IBOutlet UITextField *titleText;    // title text field
     IBOutlet UILabel *loaded;           // TEMPORARY label to check "save" and "load" works
         
-    UIImagePickerController* takePhoto;
-    UIImagePickerController* loadPhoto;
-    UIImage *image;
-    IBOutlet UIImageView *imageView;
+    UIImagePickerController* takePhoto; // bring camera to take a picture as an attachment
+    UIImagePickerController* loadPhoto; // bring photo app for an attachment
+    UIImage *image;                     // display the photo to be sent
+    IBOutlet UIImageView *imageView;    // display the photo to be sent
 }
 
 // Save data from text field
