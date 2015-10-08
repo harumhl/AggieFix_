@@ -19,7 +19,7 @@
     // Do any additional setup after loading the view.
     
     [scroller setScrollEnabled:YES];
-    [scroller setContentSize:CGSizeMake(320, 568)];
+    [scroller setContentSize:CGSizeMake(320, 768)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,6 +40,23 @@
 - (IBAction)exit:(id)sender {
     
     [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (IBAction)saveText:(id)sender {
+    NSString *saveTitleText = titleText.text;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:saveTitleText forKey:@"titleText"];
+    [defaults synchronize];
+}
+- (IBAction)loadText:(id)sender {
+    // load the saved info to the label
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *loadTitleText = [defaults objectForKey:@"titleText"];
+    [loaded setText:loadTitleText];
+
+}
+- (IBAction)dismissKeyboard:(id)sender {
+    [sender resignFirstResponder];
 }
 
 @end

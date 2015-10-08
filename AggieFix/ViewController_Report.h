@@ -10,6 +10,13 @@
 
 @interface ViewController_Report : UIViewController {
     IBOutlet UIScrollView *scroller;
+    IBOutlet UITextField *titleText;
+    IBOutlet UILabel *loaded;
 }
+
+// https://www.youtube.com/watch?v=NavVADVU6fk
+- (IBAction)saveText:(id)sender;
+- (IBAction)loadText:(id)sender;
+- (IBAction)dismissKeyboard:(id)sender;
 
 @end
