@@ -63,32 +63,35 @@
     UIAlertController *photoOption = [UIAlertController alertControllerWithTitle:@"Photo option" message:@"" preferredStyle:UIAlertViewStyleDefault];
     
     // 1st option
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Take a picture" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {photoOptionSelected.text = @"camera";}];
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Take a picture" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        takePhoto = [[UIImagePickerController alloc] init];
+        takePhoto.delegate = self;
+        [takePhoto setSourceType:UIImagePickerControllerSourceTypeCamera];
+        [self presentViewController:takePhoto animated:YES completion:NULL];
+    }];
     [photoOption addAction:defaultAction];
     
     // 2nd option
-    UIAlertAction* anotherAction = [UIAlertAction actionWithTitle:@"Get photo from photo app" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {photoOptionSelected.text = @"photo";}];
+    UIAlertAction* anotherAction = [UIAlertAction actionWithTitle:@"Get photo from photo app" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        takePhoto = [[UIImagePickerController alloc] init];
+        takePhoto.delegate = self;
+        [takePhoto setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+        [self presentViewController:takePhoto animated:YES completion:NULL];
+    }];
     [photoOption addAction:anotherAction];
+    
+    // Cancel?!
+    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }];
+    [photoOption addAction:cancelAction];
+
 
     // present
     [self presentViewController:photoOption animated:YES completion:nil];
 }
 
 // https://www.youtube.com/watch?v=T7COfFjhXo8
-- (IBAction)takePhoto:(id)sender {
-    takePhoto = [[UIImagePickerController alloc] init];
-    takePhoto.delegate = self;
-    [takePhoto setSourceType:UIImagePickerControllerSourceTypeCamera];
-    [self presentViewController:takePhoto animated:YES completion:NULL];
-//    [takePhoto release];
-}
-- (IBAction)chooseExisting:(id)sender {
-    takePhoto = [[UIImagePickerController alloc] init];
-    takePhoto.delegate = self;
-    [takePhoto setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-    [self presentViewController:takePhoto animated:YES completion:NULL];
-//    [takePhoto release];
-}
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     image = [info objectForKey:UIImagePickerControllerOriginalImage];
     [imageView setImage:image];

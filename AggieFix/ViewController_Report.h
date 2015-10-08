@@ -13,9 +13,7 @@
     IBOutlet UIScrollView *scroller;
     IBOutlet UITextField *titleText;
     IBOutlet UILabel *loaded;
-    
-    IBOutlet UILabel *photoOptionSelected;
-    
+        
     UIImagePickerController* takePhoto;
     UIImagePickerController* loadPhoto;
     UIImage *image;
