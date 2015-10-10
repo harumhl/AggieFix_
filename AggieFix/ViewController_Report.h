@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MessageUI/MessageUI.h> // for sending email
+#import <MessageUI/MessageUI.h>         // for sending email
+#import <CoreLocation/CoreLocation.h>   // for geotagging
 
-@interface ViewController_Report : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
+@interface ViewController_Report : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate> {
     
     IBOutlet UIScrollView *scroller;    // Making the screen scrollable
     IBOutlet UITextField *titleText;    // title text field
@@ -19,6 +20,13 @@
     UIImagePickerController* loadPhoto; // bring photo app for an attachment
     UIImage *image;                     // display the photo to be sent
     IBOutlet UIImageView *imageView;    // display the photo to be sent
+    
+    IBOutlet UILabel *displayLatitude;         // TEMPORARY label to display latitude
+    IBOutlet UILabel *displayLongitude;        // TEMPORARY label to display longitude
+    IBOutlet UILabel *displayAddress;          // TEMPORARY label to display address
+    CLLocationManager *locationManager;        // main variable for geotagging
+    CLGeocoder *geocoder;                      // contains location info (not human-readable friendly)
+    CLPlacemark *placemark;                    // contains converted info from geocoder in human-readable
 }
 
 // Save data from text field
@@ -36,4 +44,10 @@
 // https://www.youtube.com/watch?v=00rKDuIqEt0
 // https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/SystemMessaging_TopicsForIOS/Articles/SendingaMailMessage.html
 - (IBAction)displayComposerSheet:(id)sender;
+
+// Get current location
+// https://www.youtube.com/watch?v=qY4xCMTejH8
+// http://stackoverflow.com/questions/25916841/cllocationmanager-startupdatinglocation-not-calling-locationmanagerdidupdateloc
+- (IBAction)getCurrentLocation:(id)sender;      // Gets the current location via geotagging
+
 @end

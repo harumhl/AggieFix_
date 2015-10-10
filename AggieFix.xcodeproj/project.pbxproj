@@ -17,6 +17,7 @@
 		F0901BE21BA8B9680022BDE0 /* ViewController_Report.m in Sources */ = {isa = PBXBuildFile; fileRef = F0901BE11BA8B9680022BDE0 /* ViewController_Report.m */; };
 		F096FE7D1BC32F1600324C47 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F096FE7B1BC32F1600324C47 /* LaunchScreen.xib */; };
 		F096FE821BC3306500324C47 /* ViewController_AboutUs.m in Sources */ = {isa = PBXBuildFile; fileRef = F096FE811BC3306500324C47 /* ViewController_AboutUs.m */; };
+		F0BE4DF01BC833A200BADACA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0BE4DEF1BC833A200BADACA /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		F096FE7C1BC32F1600324C47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = AggieFix/Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F096FE801BC3306500324C47 /* ViewController_AboutUs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController_AboutUs.h; sourceTree = "<group>"; };
 		F096FE811BC3306500324C47 /* ViewController_AboutUs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController_AboutUs.m; sourceTree = "<group>"; };
+		F0BE4DEF1BC833A200BADACA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0BE4DF01BC833A200BADACA /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +75,7 @@
 		F0901BAE1BA8B8290022BDE0 = {
 			isa = PBXGroup;
 			children = (
+				F0BE4DEF1BC833A200BADACA /* CoreLocation.framework */,
 				F0901BB91BA8B8290022BDE0 /* AggieFix */,
 				F0901BD31BA8B82C0022BDE0 /* AggieFixTests */,
 				F0901BB81BA8B8290022BDE0 /* Products */,

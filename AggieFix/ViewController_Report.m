@@ -58,7 +58,7 @@
 }
 //==============================================================================
 - (IBAction)photoOption:(id)sender {
-    UIAlertController *photoOption = [UIAlertController alertControllerWithTitle:@"Photo option" message:@"" preferredStyle:UIAlertViewStyleDefault];
+    UIAlertController *photoOption = [UIAlertController alertControllerWithTitle:@"Photo option" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
     
     // 1st option
     UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Take a picture" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
@@ -146,5 +146,88 @@
     [self dismissViewControllerAnimated:YES completion:nil];
         // [self dismissModalViewControllerAnimated:YES]; since it depreciated
 }
+
+//==============================================================================
+// Shows two options whether to get current location or enter it manually
+// Copied the skeleton code from photoOption
+- (IBAction)getCurrentLocation:(id)sender {
+    UIAlertController *getLocation = [UIAlertController alertControllerWithTitle:@"Get Location" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    
+    // 1st option
+    UIAlertAction* getCurrentLocation = [UIAlertAction actionWithTitle:@"Get Current Location" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        // Action to be taken -> get Current Location
+        locationManager = [[CLLocationManager alloc] init];
+        geocoder = [[CLGeocoder alloc] init];
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        
+        // this portion (3 lines) is from the StackOverflow website - getting permission
+        locationManager.distanceFilter=kCLDistanceFilterNone;
+        [locationManager requestWhenInUseAuthorization];
+        [locationManager startMonitoringSignificantLocationChanges];
+        
+        [locationManager startUpdatingLocation];
+    }];
+    [getLocation addAction:getCurrentLocation]; // put the alert in the alertController list
+    
+    // 2nd option
+    UIAlertAction* enterCurrentLocation = [UIAlertAction actionWithTitle:@"Enter Current Location manually" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        // Action to be taken -> enter Current Location manually
+        // SHOW POPUP COMMENT SPOT TO TYPE
+/*      loadPhoto = [[UIImagePickerController alloc] init];
+        loadPhoto.delegate = self;
+        [loadPhoto setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+        [self presentViewController:loadPhoto animated:YES completion:NULL];*/
+    }];
+    [getLocation addAction:enterCurrentLocation]; // put the alert in the alertController list
+    
+    // Cancel option
+    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) { // do nothing but just dismiss the option list
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }];
+    [getLocation addAction:cancelAction]; // put the alert in the alertController list
+    
+    
+    // present
+    [self presentViewController:getLocation animated:YES completion:nil];
+}
+#pragma mark CLLocationManagerDelegate Methods
+
+// If Geotagging fails
+- (void) locationManager:(CLLocationManager *)manager didFailWithError:(nonnull NSError *)error {
+    NSLog(@"Error: %@", error);
+    NSLog(@"Failed to get location.");
+    
+    // Error Domain=kCLErrorDomain Code=0 "(null)"
+    // The above error means the wifi setting or Internet setting is bad.
+    // There may not be any problem with the code
+}
+// If Geotagging works, then get the information as formatted
+// THIS NEEDS WORK LIKE ->> CONTINUOUS UPDATE IF IT'S ON, BUT IF APP IS OFF THEN OFF (NO BACKGROUND)
+- (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(nonnull NSArray<CLLocation *> *)locations {
+    // Update location from the given array
+    // NSLog(@"Location: %@",[locations lastObject]); -> uncomment to see what information it contains
+    CLLocation *currentLocation = [locations lastObject];
+    
+    // Display coordinates in labels
+    if (currentLocation != nil) {
+        self->displayLatitude.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
+        self->displayLongitude.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
+    }
+    
+    // Convert geocoder's info to human-readable friendly, place it in placemark
+    [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+        if (error == nil && [placemarks count] >0) {
+            placemark = [placemarks lastObject];
+            self->displayAddress.text = [NSString stringWithFormat:@"%@ %@\n%@ %@\n%@\n%@",
+                                  placemark.subThoroughfare,    placemark.thoroughfare,
+                                  placemark.postalCode,         placemark.locality,
+                                  placemark.administrativeArea,
+                                  placemark.country];
+        } else {
+            NSLog(@"%@", error.debugDescription);}
+    }];
+}
+//==============================================================================
 
 @end

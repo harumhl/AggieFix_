@@ -24,6 +24,12 @@
 	<true/>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We do not store personal info</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We do not store personal info</string>
+	<key>privacy - location usage description</key>
+	<string>We do not store personal info</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
