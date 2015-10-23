@@ -21,6 +21,8 @@
     // Making the screen scrollable
     [scroller setScrollEnabled:YES];
     [scroller setContentSize:CGSizeMake(320, 768)];
+    
+    [self addPickerView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,20 +41,6 @@
 */
 
 //==============================================================================
-// TEMPORARY function to show text saving from title field && loading from saved
-- (IBAction)saveText:(id)sender {
-    NSString *saveTitleText = titleText.text;
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:saveTitleText forKey:@"titleText"];
-    [defaults synchronize];
-}
-- (IBAction)loadText:(id)sender {
-    // load the saved info to the label
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *loadTitleText = [defaults objectForKey:@"titleText"];
-    [loaded setText:loadTitleText];
-
-}
 - (IBAction)dismissKeyboard:(id)sender {
     [sender resignFirstResponder];
 }
@@ -113,9 +101,9 @@
     
     // Set the title
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *loadTitleText = [defaults objectForKey:@"titleText"];
+    NSString *loadChosenCategory = [defaults objectForKey:@"chosenCategory"]; // NOT FROM PREVIOUS SESSION!!!
     NSString *organizationTitle = @"AggieFix_";
-    NSString *wholeTitle = [organizationTitle stringByAppendingString:loadTitleText];
+    NSString *wholeTitle = [organizationTitle stringByAppendingString:loadChosenCategory];
     [mailComposer setSubject:wholeTitle];
     
     // Set up the recipients. // pass NSArray
@@ -130,11 +118,10 @@
     
     // Fill out the email body text.
     // FOR THE BELOW CASE, THIS CAN HAPPEN ONLY IF THE INFO IS GIVEN. TEST IF SO. 
-    NSString *emailBody = [NSString stringWithFormat:@"%@%@%@\n%@%@\n%@%@",
+    NSString *emailBody = [NSString stringWithFormat:@"%@%@%@",
                            @"Howdy Sir or Madame,\n\n",
-                           @"Latitude: ", [defaults objectForKey:@"latitude"],
-                           @"Longitude: ", [defaults objectForKey:@"longitude"],
-                           @"Address: ", [defaults objectForKey:@"address"]];
+                           [defaults objectForKey:@"longitude_latitude"],
+                           [defaults objectForKey:@"address"]];
     [mailComposer setMessageBody:emailBody isHTML:NO];
     
     // Present the mail composition interface.
@@ -204,6 +191,8 @@
 - (void) locationManager:(CLLocationManager *)manager didFailWithError:(nonnull NSError *)error {
     NSLog(@"Error: %@", error);
     NSLog(@"Failed to get location.");
+    [added setText:@"← failed to geotag"];
+
     
     // Error Domain=kCLErrorDomain Code=0 "(null)"
     // The above error means the wifi setting or Internet setting is bad.
@@ -220,11 +209,13 @@
     if (currentLocation != nil) {
         // Save it in the UserDefaults (or the shared database) so I can use the info for email
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSString *saveLatitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
-        NSString *saveLongitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
-        [defaults setObject:saveLatitude forKey:@"latitude"];
-        [defaults setObject:saveLongitude forKey:@"longitude"];
+        NSString *saveLongitudeLatitude = [NSString stringWithFormat:@"%@%@\n%@%@\n",
+         @"Longitude: ", [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude],
+         @"Latitude: ", [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude]];
+        [defaults setObject:saveLongitudeLatitude forKey:@"longitude_latitude"];
         [defaults synchronize];
+        
+        [added setText:@"← Added successfully"]; // WHAT IF IT'S DONE SEVERAL TIMES????
     }
     
     // Convert geocoder's info to human-readable friendly, place it in placemark
@@ -234,17 +225,72 @@
             
             // Save it in the UserDefaults (or the shared database) so I can use the info for email
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            NSString *saveAddress = [NSString stringWithFormat:@"%@ %@, %@, %@ %@",
-                                               placemark.subThoroughfare,    placemark.thoroughfare,
-                                               placemark.locality, placemark.administrativeArea,
-                                               placemark.postalCode];
+            NSString *saveAddress = [NSString stringWithFormat:@"%@%@ %@, %@, %@ %@",
+                                        @"Address: ",
+                                        placemark.subThoroughfare,    placemark.thoroughfare,
+                                        placemark.locality, placemark.administrativeArea,
+                                        placemark.postalCode];
             [defaults setObject:saveAddress forKey:@"address"];
             [defaults synchronize];
 
         } else {
             NSLog(@"%@", error.debugDescription);}
     }];
+    
 }
 //==============================================================================
+// Picker View for Categories
+-(void)addPickerView{
+    pickerArray = [[NSArray alloc] initWithObjects:@"Desks",
+                   @"Sprinklers",@"Lights",@"Water Fountain",@"Others", nil];
+    
+    myPickerView = [[UIPickerView alloc] init];
+    myPickerView.dataSource = self;
+    myPickerView.delegate = self;
+    myPickerView.showsSelectionIndicator = YES;
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]
+                                   initWithTitle:@"Done" style:UIBarButtonItemStyleDone
+                                   target:self action:@selector(doneWithPickerView)];
 
+    // toolbar = where 'done' button is at.
+    UIToolbar *toolBar = [[UIToolbar alloc]initWithFrame:
+                          CGRectMake(0, self.view.frame.size.height-
+                                     myPickerView.frame.size.height-50, 320, 40)];
+    [toolBar setBarStyle:UIBarStyleDefault];
+    
+    NSArray *toolbarItems = [NSArray arrayWithObjects:doneButton, nil];
+    [toolBar setItems:toolbarItems];
+    
+    categories.inputView = myPickerView;
+    categories.inputAccessoryView = toolBar;
+    
+}
+#pragma mark - Picker View Data source
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 1;
+}
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    return [pickerArray count];
+}
+
+#pragma mark- Picker View Delegate
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow: (NSInteger)row inComponent:(NSInteger)component{
+    // Saving the chosen category info, so it can be used as the email title
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *saveChosenCategory = [pickerArray objectAtIndex:row];
+    [defaults setObject:saveChosenCategory forKey:@"chosenCategory"];
+
+    // Showing the chosen category in the text field
+    [categories setText:[pickerArray objectAtIndex:row]];
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow: (NSInteger)row forComponent:(NSInteger)component{
+    return [pickerArray objectAtIndex:row]; // For Display of Options
+}
+
+-(void)doneWithPickerView {
+    [self->categories resignFirstResponder];
+}
+//==============================================================================
 @end
