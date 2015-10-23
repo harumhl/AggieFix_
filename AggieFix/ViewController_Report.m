@@ -129,7 +129,12 @@
                      fileName:@"ipodnano"];
     
     // Fill out the email body text.
-    NSString *emailBody = @"It is raining in sunny California!";
+    // FOR THE BELOW CASE, THIS CAN HAPPEN ONLY IF THE INFO IS GIVEN. TEST IF SO. 
+    NSString *emailBody = [NSString stringWithFormat:@"%@%@%@\n%@%@\n%@%@",
+                           @"Howdy Sir or Madame,\n\n",
+                           @"Latitude: ", [defaults objectForKey:@"latitude"],
+                           @"Longitude: ", [defaults objectForKey:@"longitude"],
+                           @"Address: ", [defaults objectForKey:@"address"]];
     [mailComposer setMessageBody:emailBody isHTML:NO];
     
     // Present the mail composition interface.
@@ -167,6 +172,8 @@
         [locationManager startMonitoringSignificantLocationChanges];
         
         [locationManager startUpdatingLocation];
+        
+        // GIVE CONFIRMATION IF ADDED SUCCESSFULLY
     }];
     [getLocation addAction:getCurrentLocation]; // put the alert in the alertController list
     
@@ -211,19 +218,29 @@
     
     // Display coordinates in labels
     if (currentLocation != nil) {
-        self->displayLatitude.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
-        self->displayLongitude.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
+        // Save it in the UserDefaults (or the shared database) so I can use the info for email
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *saveLatitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
+        NSString *saveLongitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
+        [defaults setObject:saveLatitude forKey:@"latitude"];
+        [defaults setObject:saveLongitude forKey:@"longitude"];
+        [defaults synchronize];
     }
     
     // Convert geocoder's info to human-readable friendly, place it in placemark
     [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
         if (error == nil && [placemarks count] >0) {
             placemark = [placemarks lastObject];
-            self->displayAddress.text = [NSString stringWithFormat:@"%@ %@\n%@ %@\n%@\n%@",
-                                  placemark.subThoroughfare,    placemark.thoroughfare,
-                                  placemark.postalCode,         placemark.locality,
-                                  placemark.administrativeArea,
-                                  placemark.country];
+            
+            // Save it in the UserDefaults (or the shared database) so I can use the info for email
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            NSString *saveAddress = [NSString stringWithFormat:@"%@ %@, %@, %@ %@",
+                                               placemark.subThoroughfare,    placemark.thoroughfare,
+                                               placemark.locality, placemark.administrativeArea,
+                                               placemark.postalCode];
+            [defaults setObject:saveAddress forKey:@"address"];
+            [defaults synchronize];
+
         } else {
             NSLog(@"%@", error.debugDescription);}
     }];
