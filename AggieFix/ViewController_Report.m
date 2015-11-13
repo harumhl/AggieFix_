@@ -131,14 +131,36 @@
 
 // The mail compose view controller delegate method
 // TO SHOW SPLASH SCREEN, I NEED TO GET THE VALUE OF "RESULT" TO KNOW WHETHER SUCCESSFULLY SENT
-- (void)mailComposeController:(MFMailComposeViewController *)controller
-          didFinishWithResult:(MFMailComposeResult)result
-                        error:(NSError *)error
-{
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(nullable NSError *)error {
+    
+    if (result == MFMailComposeResultSent) {
+        NSLog(@"Result: senttt");
+        
+        [emailSent setText:@"Email sent"];
+        /*
+        UIAlertController *emailSent = [UIAlertController alertControllerWithTitle:@"Email Sent" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];// or UIAlertControllerStyleAlert
+        
+        // 1st option
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Take a picture" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+            
+        }];
+        [emailSent addAction:defaultAction]; // put the alert in the alertController list
+        
+        // present
+        [self presentViewController:emailSent animated:YES completion:nil];*/
+        
+    }
+    else if (result == MFMailComposeResultCancelled) {
+        NSLog(@"Result: cancelleddd");
+    }
+    else if (result == MFMailComposeResultFailed) {
+        NSLog(@"Result: error - faileddd");
+    }
+    else if (result == MFMailComposeResultSaved) {
+        NSLog(@"Result: draft saveddd");
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
-        // [self dismissModalViewControllerAnimated:YES]; since it depreciated
 }
-
 //==============================================================================
 // Shows two options whether to get current location or enter it manually
 // Copied the skeleton code from photoOption

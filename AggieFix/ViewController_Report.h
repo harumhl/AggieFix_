@@ -19,7 +19,7 @@
     UIImage *image;                     // display the photo to be sent
     IBOutlet UIImageView *imageView;    // display the photo to be sent
     
-    UILabel *added;            // Display if geotagging was done successfully
+    UILabel *added;                     // Display if geotagging was done successfully
     CLLocationManager *locationManager; // main variable for geotagging
     CLGeocoder *geocoder;               // contains location info (not human-readable friendly)
     CLPlacemark *placemark;             // contains converted info from geocoder in human-readable
@@ -27,6 +27,9 @@
     IBOutlet UITextField *categories;
     UIPickerView *myPickerView;         // For Picker view for Categories
     NSArray *pickerArray;
+    
+    // TEMP LABEL WHETHER EMAIL IS SENT
+    UILabel *emailSent;
 }
 
 // Save data from text field
@@ -41,6 +44,7 @@
 // Send email NOT FULLY IMPLEMENTED YET B/C OF SIMULATOR LIMITATION
 // https://www.youtube.com/watch?v=00rKDuIqEt0
 // https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/SystemMessaging_TopicsForIOS/Articles/SendingaMailMessage.html
+// https://books.google.com/books?id=ZZkQAwAAQBAJ&pg=PA130&lpg=PA130&dq=xcode+if+email+is+sent&source=bl&ots=yd-HRXmJCm&sig=WNXV_0Du0cq4ZWpevDSaMPLAtnc&hl=en&sa=X&ved=0CE4Q6AEwB2oVChMI_7jj2NeJyQIVy-smCh2sOA3K#v=onepage&q=xcode%20if%20email%20is%20sent&f=false
 - (IBAction)displayComposerSheet:(id)sender;
 
 // Get current location
