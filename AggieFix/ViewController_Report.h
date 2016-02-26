@@ -13,6 +13,8 @@
 @interface ViewController_Report : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate, UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate> {
     
     IBOutlet UIScrollView *scroller;    // Making the screen scrollable
+    IBOutlet UITextView *commentBox;
+    
     
     UIImagePickerController* takePhoto; // bring camera to take a picture as an attachment
     UIImagePickerController* loadPhoto; // bring photo app for an attachment
@@ -29,7 +31,7 @@
     NSArray *pickerArray;
     
     // TEMP LABEL WHETHER EMAIL IS SENT
-    UILabel *emailSent;
+    IBOutlet UILabel *isEmailSent;
 }
 
 // Save data from text field

@@ -110,11 +110,11 @@
     [mailComposer setToRecipients:@[@"haru.mhl@gmail.com"]];
     
     // Attach an image to the email.
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"ipodnano"
-                                                     ofType:@"png"];
-    NSData *myData = [NSData dataWithContentsOfFile:path];
-    [mailComposer addAttachmentData:myData mimeType:@"image/png"
-                     fileName:@"ipodnano"];
+    NSData *theImage = UIImagePNGRepresentation(image);
+    [mailComposer addAttachmentData:theImage
+                       mimeType:@"image/png"
+                       fileName:@"Photo.png"];
+
     
     // Fill out the email body text.
     // FOR THE BELOW CASE, THIS CAN HAPPEN ONLY IF THE INFO IS GIVEN. TEST IF SO. 
@@ -134,9 +134,7 @@
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(nullable NSError *)error {
     
     if (result == MFMailComposeResultSent) {
-        NSLog(@"Result: senttt");
-        
-        [emailSent setText:@"Email sent"];
+        [isEmailSent setText:@"Email sent"];
         /*
         UIAlertController *emailSent = [UIAlertController alertControllerWithTitle:@"Email Sent" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];// or UIAlertControllerStyleAlert
         
@@ -151,13 +149,13 @@
         
     }
     else if (result == MFMailComposeResultCancelled) {
-        NSLog(@"Result: cancelleddd");
+        [isEmailSent setText:@"Email cancelled"];
     }
     else if (result == MFMailComposeResultFailed) {
-        NSLog(@"Result: error - faileddd");
+        [isEmailSent setText:@"Email failed to send"];
     }
     else if (result == MFMailComposeResultSaved) {
-        NSLog(@"Result: draft saveddd");
+        [isEmailSent setText:@"Email saved"];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -315,4 +313,8 @@
     [self->categories resignFirstResponder];
 }
 //==============================================================================
+
+
+
+
 @end
