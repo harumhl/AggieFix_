@@ -68,6 +68,20 @@
     }];
     [photoOption addAction:anotherAction]; // put the alert in the alertController list
     
+    // View picture if one is already selected
+    CGImageRef cgref = [image CGImage];
+    CIImage *cim = [image CIImage];
+    
+    if (!(cim == nil && cgref == NULL)) { // If there is am image available in UIImage "image" 
+        
+        UIAlertAction* viewAction = [UIAlertAction actionWithTitle:@"View selected photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+
+            // NEED TO IMPLEMENT TO DISPLAY CURRENTLY SELECTED PHOTO IN FULL SCREEN!
+            
+        }];
+        [photoOption addAction:viewAction];
+    }
+
     // Cancel option
     UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) { // do nothing but just dismiss the option list
         [self dismissViewControllerAnimated:YES completion:NULL];
