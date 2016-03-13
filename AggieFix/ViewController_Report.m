@@ -54,6 +54,9 @@
         takePhoto = [[UIImagePickerController alloc] init];
         takePhoto.delegate = self;
         [takePhoto setSourceType:UIImagePickerControllerSourceTypeCamera];
+        
+        clickForPicture.titleLabel.hidden = YES;
+        
         [self presentViewController:takePhoto animated:YES completion:NULL];
     }];
     [photoOption addAction:defaultAction]; // put the alert in the alertController list
@@ -64,6 +67,9 @@
         loadPhoto = [[UIImagePickerController alloc] init];
         loadPhoto.delegate = self;
         [loadPhoto setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+        
+        clickForPicture.titleLabel.hidden = YES;
+        
         [self presentViewController:loadPhoto animated:YES completion:NULL];
     }];
     [photoOption addAction:anotherAction]; // put the alert in the alertController list

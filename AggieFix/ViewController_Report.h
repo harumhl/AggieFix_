@@ -20,6 +20,7 @@
     UIImagePickerController* loadPhoto; // bring photo app for an attachment
     UIImage *image;                     // display the photo to be sent
     IBOutlet UIImageView *imageView;    // display the photo to be sent
+    IBOutlet UIButton *clickForPicture;
     
     UILabel *added;                     // Display if geotagging was done successfully
     CLLocationManager *locationManager; // main variable for geotagging
