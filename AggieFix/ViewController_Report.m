@@ -23,6 +23,12 @@
     [scroller setContentSize:CGSizeMake(320, 768)];
     
     [self addPickerView];
+    
+    // Empty automatic geographic location data
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"geoCurrentLocation"]; // flag
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"longitude_latitude"]; // geotag 1
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"address"];            // geotag 2
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"manualLocation"];     // entering
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,10 +61,11 @@
         takePhoto.delegate = self;
         [takePhoto setSourceType:UIImagePickerControllerSourceTypeCamera];
         
-        clickForPicture.titleLabel.hidden = YES;
-        
         [self presentViewController:takePhoto animated:YES completion:NULL];
-    }];
+
+        clickForPicture.titleLabel.hidden = YES;
+}];
+    
     [photoOption addAction:defaultAction]; // put the alert in the alertController list
     
     // 2nd option
@@ -68,10 +75,11 @@
         loadPhoto.delegate = self;
         [loadPhoto setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
         
-        clickForPicture.titleLabel.hidden = YES;
-        
         [self presentViewController:loadPhoto animated:YES completion:NULL];
+
+        clickForPicture.titleLabel.hidden = YES;
     }];
+    
     [photoOption addAction:anotherAction]; // put the alert in the alertController list
     
     // View picture if one is already selected
@@ -79,6 +87,7 @@
     CIImage *cim = [image CIImage];
     
     if (!(cim == nil && cgref == NULL)) { // If there is am image available in UIImage "image" 
+        
         
         UIAlertAction* viewAction = [UIAlertAction actionWithTitle:@"View selected photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
 
@@ -137,11 +146,33 @@
 
     
     // Fill out the email body text.
-    // FOR THE BELOW CASE, THIS CAN HAPPEN ONLY IF THE INFO IS GIVEN. TEST IF SO. 
-    NSString *emailBody = [NSString stringWithFormat:@"%@%@%@",
-                           @"Howdy Sir or Madame,\n\n",
-                           [defaults objectForKey:@"longitude_latitude"],
-                           [defaults objectForKey:@"address"]];
+    // FOR THE BELOW CASE, THIS CAN HAPPEN ONLY IF THE INFO IS GIVEN. TEST IF SO.
+    NSString *emailBody;
+    
+    // Testing if location information is given
+    if ([defaults objectForKey:@"geoCurrentLocation"] != nil) {
+        
+        emailBody = [NSString stringWithFormat:@"%@%@%@",
+                     @"Howdy Sir or Madame,\n\n",
+                     [defaults objectForKey:@"longitude_latitude"],
+                     [defaults objectForKey:@"address"]];
+
+    }
+    else if ([defaults objectForKey:@"manualLocation"] != nil) {
+        
+        emailBody = [NSString stringWithFormat:@"%@%@", @"Howdy Sir or Madame,\n\n", [defaults objectForKey:@"manualLocation"]];
+    }
+    else { // If no location information is given, either by geotagging nor manual entering, then prompt an alert
+        UIAlertController *askForLocation = [UIAlertController alertControllerWithTitle:@"Can you enter location information?" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* promptForLocation = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+
+        
+        [askForLocation addAction:promptForLocation]; // put the alert in the alertController list
+
+        [self presentViewController:askForLocation animated:YES completion:nil];
+    }
+
     [mailComposer setMessageBody:emailBody isHTML:NO];
     
     // Present the mail composition interface.
@@ -200,6 +231,11 @@
         
         [locationManager startUpdatingLocation];
         
+        // Making a note that it is added
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:@"" forKey:@"geoCurrentLocation"];
+
+        
         // GIVE CONFIRMATION IF ADDED SUCCESSFULLY
     }];
     [getLocation addAction:getCurrentLocation]; // put the alert in the alertController list
@@ -207,11 +243,23 @@
     // 2nd option
     UIAlertAction* enterCurrentLocation = [UIAlertAction actionWithTitle:@"Enter Current Location manually" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
         // Action to be taken -> enter Current Location manually
-        // SHOW POPUP COMMENT SPOT TO TYPE
-/*      loadPhoto = [[UIImagePickerController alloc] init];
-        loadPhoto.delegate = self;
-        [loadPhoto setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-        [self presentViewController:loadPhoto animated:YES completion:NULL];*/
+
+        // Show another alert with blank (to type with keyboard)
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Enter Location here" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        
+        // Button option
+        UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"Save" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        
+            // Saving the location data
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:[alert.textFields objectAtIndex:0].text forKey:@"manualLocation"];
+        }];
+        
+        [alert addAction:defaultAction];
+        
+        [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {}];
+        
+        [self presentViewController:alert animated:YES completion:nil];
     }];
     [getLocation addAction:enterCurrentLocation]; // put the alert in the alertController list
     
