@@ -18,6 +18,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    
+    commentBox.delegate = self;
+    
+    
     // Making the screen scrollable
     [scroller setScrollEnabled:YES];
     [scroller setContentSize:CGSizeMake(320, 768)];
@@ -47,9 +51,25 @@
 */
 
 //==============================================================================
-- (IBAction)dismissKeyboard:(id)sender {
-    [sender resignFirstResponder];
+// Dismiss Keyboard when "Done" is pressed
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    NSCharacterSet *doneButtonCharacterSet = [NSCharacterSet newlineCharacterSet];
+    NSRange replacementTextRange = [text rangeOfCharacterFromSet:doneButtonCharacterSet];
+    NSUInteger location = replacementTextRange.location;
+    
+    if (textView.text.length + text.length > 140){
+        if (location != NSNotFound){
+            [textView resignFirstResponder];
+        }
+        return NO;
+    }
+    else if (location != NSNotFound){
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
 }
+
 //==============================================================================
 - (IBAction)photoOption:(id)sender {
     UIAlertController *photoOption = [UIAlertController alertControllerWithTitle:@"Photo option" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];

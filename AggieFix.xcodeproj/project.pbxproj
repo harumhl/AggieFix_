@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F036FBD61C98C3E900491096 /* ViewController_History.m in Sources */ = {isa = PBXBuildFile; fileRef = F036FBD51C98C3E900491096 /* ViewController_History.m */; };
+		F036FBDC1C98CDA700491096 /* NSObject_Report.m in Sources */ = {isa = PBXBuildFile; fileRef = F036FBDB1C98CDA700491096 /* NSObject_Report.m */; };
 		F0613B101BC44DAA00D6E1F1 /* UiView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0613B0F1BC44DAA00D6E1F1 /* UiView.m */; };
 		F0901BBD1BA8B82A0022BDE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F0901BBC1BA8B82A0022BDE0 /* main.m */; };
 		F0901BC01BA8B82B0022BDE0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0901BBF1BA8B82B0022BDE0 /* AppDelegate.m */; };
@@ -31,6 +33,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F036FBD41C98C3E900491096 /* ViewController_History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController_History.h; sourceTree = "<group>"; };
+		F036FBD51C98C3E900491096 /* ViewController_History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController_History.m; sourceTree = "<group>"; };
+		F036FBDA1C98CDA700491096 /* NSObject_Report.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSObject_Report.h; sourceTree = "<group>"; };
+		F036FBDB1C98CDA700491096 /* NSObject_Report.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObject_Report.m; sourceTree = "<group>"; };
 		F0613B0E1BC44DAA00D6E1F1 /* UiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UiView.h; sourceTree = "<group>"; };
 		F0613B0F1BC44DAA00D6E1F1 /* UiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UiView.m; sourceTree = "<group>"; };
 		F0901BB71BA8B8290022BDE0 /* AggieFix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AggieFix.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +107,10 @@
 				F0901BC41BA8B82B0022BDE0 /* Main.storyboard */,
 				F0901BE01BA8B9680022BDE0 /* ViewController_Report.h */,
 				F0901BE11BA8B9680022BDE0 /* ViewController_Report.m */,
+				F036FBDA1C98CDA700491096 /* NSObject_Report.h */,
+				F036FBDB1C98CDA700491096 /* NSObject_Report.m */,
+				F036FBD41C98C3E900491096 /* ViewController_History.h */,
+				F036FBD51C98C3E900491096 /* ViewController_History.m */,
 				F096FE801BC3306500324C47 /* ViewController_AboutUs.h */,
 				F096FE811BC3306500324C47 /* ViewController_AboutUs.m */,
 				F0613B0E1BC44DAA00D6E1F1 /* UiView.h */,
@@ -244,6 +254,8 @@
 				F0613B101BC44DAA00D6E1F1 /* UiView.m in Sources */,
 				F0901BBD1BA8B82A0022BDE0 /* main.m in Sources */,
 				F0901BE21BA8B9680022BDE0 /* ViewController_Report.m in Sources */,
+				F036FBDC1C98CDA700491096 /* NSObject_Report.m in Sources */,
+				F036FBD61C98C3E900491096 /* ViewController_History.m in Sources */,
 				F096FE821BC3306500324C47 /* ViewController_AboutUs.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,7 +14,7 @@
     
     IBOutlet UIScrollView *scroller;    // Making the screen scrollable
     IBOutlet UITextView *commentBox;
-    
+   
     
     UIImagePickerController* takePhoto; // bring camera to take a picture as an attachment
     UIImagePickerController* loadPhoto; // bring photo app for an attachment
@@ -35,9 +35,10 @@
     IBOutlet UILabel *isEmailSent;
 }
 
-// Save data from text field
-// https://www.youtube.com/watch?v=NavVADVU6fk
-- (IBAction)dismissKeyboard:(id)sender; // dismiss keyboard when hit "return" FOR ONLY TITLE
+
+// Dismiss Keyboard when "Done" is pressed
+//http://code.tutsplus.com/tutorials/ios-sdk-uitextview-uitextviewdelegate--mobile-11210
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text;
 
 // Shows two (or three, third to cancel) options to choose photos from
 // https://www.youtube.com/watch?v=4s-C3f6kQp4 display alert button list
